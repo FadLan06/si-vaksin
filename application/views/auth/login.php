@@ -4,9 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= $title ?> | SPD BawasluKota</title>
+  <title><?= $title ?> | SI - Vaksin</title>
 
-  <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -21,36 +20,20 @@
   <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
-      <!-- <div class="card-header text-center">
-      <img src="<?= base_url('assets/img/logo.png') ?>" class="img-fluid" width="30%" alt="">
-    </div> -->
       <div class="card-body">
         <p class="login-box-msg text-dark">
           <a href="<?= base_url('') ?>" class="h2"><b>SI -</b> Vaksin</a><br>
           <small>Universitas Negeri Gorontalo</small>
         </p>
-
-        <form action="<?= base_url('Auth') ?>" method="post">
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-cog"></span>
-              </div>
-            </div>
-            <select name="action" id="action" class="form-control">
-              <option value="admin">Admin</option>
-              <option value="dosen">Dosen</option>
-              <option value="mahasiswa" selected>Mahasiswa</option>
-              <option value="tendik">Tendik</option>
-            </select>
-          </div>
+        <?= $this->session->flashdata('message'); ?>
+        <form action="<?= base_url('Auth') ?>" method="POST">
           <div class="input-group mb-3">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
               </div>
             </div>
-            <input type="text" class="form-control" placeholder="Username">
+            <input type="text" name="username" class="form-control" placeholder="Username" required autocomplete="off">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-append">
@@ -58,11 +41,11 @@
                 <span class="fas fa-lock"></span>
               </div>
             </div>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="off">
           </div>
           <div class="row">
             <!-- /.col -->
-            <div class="col-4">
+            <div class="col-5">
               <button type="submit" class="btn btn-primary btn-block">Masuk</button>
             </div>
             <!-- /.col -->

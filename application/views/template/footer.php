@@ -12,7 +12,7 @@
   <!-- Main Footer -->
   <footer class="main-footer bg-dark">
     <!-- Default to the left -->
-    <strong>Copyright &copy; <?=date('Y')?> <a href="https://padodev.com" class="text-warning" target="_blank">PadoDev.Com</a></strong>
+    <strong>Copyright &copy; <?=date('Y')?> <a href="https://instagram.com/fadlan.zainudin" class="text-primary" target="_blank">MFZ</a></strong>
   </footer>
 </div>
 <!-- ./wrapper -->

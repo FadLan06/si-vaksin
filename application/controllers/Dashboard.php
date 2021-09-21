@@ -24,21 +24,4 @@ class Dashboard extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
-	// Add a new item
-	public function add()
-	{
-	}
-
-	//Update one item
-	public function update($id = NULL)
-	{
-	}
-
-	//Delete one item
-	public function delete($id = NULL)
-	{
-	}
 }
-
-/* End of file Dashboard.php */
-/* Location: ./application/controllers/Dashboard.php */

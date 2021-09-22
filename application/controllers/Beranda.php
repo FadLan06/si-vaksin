@@ -29,4 +29,105 @@ class Beranda extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
+	function aksi()
+	{
+		if(isset($_POST['submit1'])){
+			if ($_FILES['berkas1']['error'] <> 4) {
+
+				$config['upload_path'] = './assets/upload/berkas/';
+				$config['allowed_types'] = 'jpeg|jpg|png|gif|bmp|ico';
+				$config['encrypt_name'] = true;
+				$config['max_size']     = '1024';
+
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				if (!$this->upload->do_upload('berkas1')) {
+					echo "<script>alert('Data Vaksin Gagal Upload!'); </script>";
+					echo "<script>window.location=history.go(-1);</script>";
+				} else {
+					$hasil  = $this->upload->data();
+
+					$data = [
+						'status1' => htmlspecialchars($this->input->post('status1')),
+						'berkas1' => htmlspecialchars($hasil['file_name']),
+					];
+
+					$kode = $this->session->userdata('nama');
+					$this->db->where('kode', $kode);
+					$this->db->update('tb_vaksin', $data);
+
+					if ($this->db->affected_rows() > 0) {
+						echo "<script>alert('Data Vaksin Berhasil di Input!'); </script>";
+					}
+					echo "<script>window.location='" . site_url('Beranda') . "';</script>";
+				}
+			}
+		}elseif(isset($_POST['submit2'])){
+			if ($_FILES['berkas2']['error'] <> 4) {
+
+				$config['upload_path'] = './assets/upload/berkas/';
+				$config['allowed_types'] = 'jpeg|jpg|png|gif|bmp|ico';
+				$config['encrypt_name'] = true;
+				$config['max_size']     = '1024';
+
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				if (!$this->upload->do_upload('berkas2')) {
+					echo "<script>alert('Data Vaksin Gagal Upload!'); </script>";
+					echo "<script>window.location=history.go(-1);</script>";
+				} else {
+					$hasil  = $this->upload->data();
+
+					$data = [
+						'status2' => htmlspecialchars($this->input->post('status2')),
+						'berkas2' => htmlspecialchars($hasil['file_name']),
+					];
+
+					$kode = $this->session->userdata('nama');
+					$this->db->where('kode', $kode);
+					$this->db->update('tb_vaksin', $data);
+
+					if ($this->db->affected_rows() > 0) {
+						echo "<script>alert('Data Vaksin Berhasil di Input!'); </script>";
+					}
+					echo "<script>window.location='" . site_url('Beranda') . "';</script>";
+				}
+			}
+		}elseif(isset($_POST['submit3'])){
+			if ($_FILES['berkas3']['error'] <> 4) {
+
+				$config['upload_path'] = './assets/upload/berkas/';
+				$config['allowed_types'] = 'jpeg|jpg|png|gif|bmp|ico';
+				$config['encrypt_name'] = true;
+				$config['max_size']     = '1024';
+
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				if (!$this->upload->do_upload('berkas3')) {
+					echo "<script>alert('Data Vaksin Gagal Upload!'); </script>";
+					echo "<script>window.location=history.go(-1);</script>";
+				} else {
+					$hasil  = $this->upload->data();
+
+					$data = [
+						'status3' => htmlspecialchars($this->input->post('status3')),
+						'berkas3' => htmlspecialchars($hasil['file_name']),
+					];
+
+					$kode = $this->session->userdata('nama');
+					$this->db->where('kode', $kode);
+					$this->db->update('tb_vaksin', $data);
+
+					if ($this->db->affected_rows() > 0) {
+						echo "<script>alert('Data Vaksin Berhasil di Input!'); </script>";
+					}
+					echo "<script>window.location='" . site_url('Beranda') . "';</script>";
+				}
+			}
+		}
+	}
+
 }

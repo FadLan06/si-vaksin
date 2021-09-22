@@ -54,7 +54,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalCenterTitle"><b>Upload Data Barang</b></h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle"><b>Upload Data Tendik</b></h5>
         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -62,7 +62,7 @@
       <div class="modal-body">
         <?= form_open_multipart('tendik/import_data'); ?>
         <div class="form-group mb-3">
-          <label for="file">Upload Data tendik</label>
+          <label for="file">Upload Data Tendik</label>
           <input type="file" class="form-control" accept=".xlsx, .xls, .csv" id="file" name="file" autocomplete="off" required>
         </div>
         <button type="submit" name="submit" class="btn btn-info float-right"><i class="fas fa-upload"></i> Upload</button>

@@ -99,6 +99,13 @@ class Mahasiswa extends CI_Controller
 
                 $this->db->insert('tb_user', $dat);
 
+                $da = [
+                    'kode' => htmlspecialchars($this->input->post('nim', true)),
+                    'nama' => htmlspecialchars($this->input->post('nama', true))
+                ];
+
+                $this->db->insert('tb_vaksin', $da);
+
                 $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Mahasiswa Berhasil di Tambahkan! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 redirect('Mahasiswa');
             }
@@ -144,10 +151,19 @@ class Mahasiswa extends CI_Controller
     //Delete one item
     public function hapus($id)
     {
+        $data  = $this->db->get_where('tb_vaksin', array('kode' => $id))->result_array();
+        foreach ($data as $dataa) {
+            unlink("assets/upload/berkas/" . $dataa['berkas1']);
+            unlink("assets/upload/berkas/" . $dataa['berkas2']);
+            unlink("assets/upload/berkas/" . $dataa['berkas3']);
+        }
+        
         $this->db->where('nim', $id);
         $this->db->delete('tb_mahasiswa');
         $this->db->where('nama', $id);
         $this->db->delete('tb_user');
+        $this->db->where('kode', $id);
+        $this->db->delete('tb_vaksin');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Mahasiswa Berhasil di Hapus! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('Mahasiswa');
@@ -214,6 +230,14 @@ class Mahasiswa extends CI_Controller
                     $data_excel1[$i - 1]['is_active']    = 1;
                 }
 
+                $data_excel2 = array();
+                for ($i = 2; $i <= $sheets['numRows']; $i++) {
+                    if ($sheets['cells'][$i][1] == '') break;
+
+                    $data_excel2[$i - 1]['kode']    = $sheets['cells'][$i][1];
+                    $data_excel2[$i - 1]['nama']   = $sheets['cells'][$i][2];
+                }
+
                 $cek = $this->db->get_where('tb_mahasiswa', ['nim' => $nim])->row();
                 if ($cek->nim == $nim) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Data Mahasiswa Gagal di Tambahkan! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -221,6 +245,7 @@ class Mahasiswa extends CI_Controller
                 } else {
                     $this->db->insert_batch('tb_mahasiswa', $data_excel);
                     $this->db->insert_batch('tb_user', $data_excel1);
+                    $this->db->insert_batch('tb_vaksin', $data_excel2);
                     unlink($data['full_path']);
 
                     $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Mahasiswa Berhasil di Tambahkan! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

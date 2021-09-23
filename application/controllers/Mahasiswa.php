@@ -8,6 +8,9 @@ class Mahasiswa extends CI_Controller
     {
         parent::__construct();
         //Load Dependencies
+		if($this->session->userdata('username') == ''){
+			redirect('Auth');
+		}
 
     }
 
@@ -118,7 +121,8 @@ class Mahasiswa extends CI_Controller
         $data = [
             'title' => 'Ubah Data Mahasiswa',
             'mahasiswa' => $this->db->get_where('tb_mahasiswa', ['nim' => $id])->row(),
-            'user' => $this->db->get_where('tb_user', ['nama' => $id])->row()
+            'user' => $this->db->get_where('tb_user', ['nama' => $id])->row(),
+            'vaksin' => $this->db->get_where('tb_vaksin', ['kode' => $id])->row(),
         ];
 
         $this->load->view('template/header', $data);
@@ -135,13 +139,19 @@ class Mahasiswa extends CI_Controller
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
             ];
-
-            $this->db->where('nim', $this->input->post('nim'));
+            
+            $this->db->where('id_mahasiswa', $this->input->post('id_mahasiswa'));
             $this->db->update('tb_mahasiswa', $data);
 
+            $this->db->set('nama', htmlspecialchars($this->input->post('nim', true)));
             $this->db->set('username', htmlspecialchars($this->input->post('username', true)));
-            $this->db->where('nama', $this->input->post('nim'));
+            $this->db->where('id_user', $this->input->post('id_user'));
             $this->db->update('tb_user');
+
+            $this->db->set('kode', htmlspecialchars($this->input->post('nim', true)));
+            $this->db->set('nama', htmlspecialchars($this->input->post('nama', true)));
+            $this->db->where('id_vaksin', $this->input->post('id_vaksin'));
+            $this->db->update('tb_vaksin');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Mahasiswa Berhasil di Ubah! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Mahasiswa');

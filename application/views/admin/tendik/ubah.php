@@ -27,6 +27,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="id">ID</label>
+                                                <input id="id_tendik" type="hidden" class="form-control" name="id_tendik" autocomplete="off" required value="<?= $tendik->id_tendik ?>">
                                                 <input id="id" type="text" class="form-control" name="id" autocomplete="off" required value="<?= $tendik->id ?>">
                                                 <?= form_error('id', '<small class="text-danger pl-3">', '</small>') ?>
                                             </div>
@@ -45,12 +46,14 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="username">Username</label>
+                                                <input id="id_user" type="hidden" class="form-control" name="id_user" required autocomplete="off" value="<?= $user->id_user ?>">
                                                 <input id="username" type="text" class="form-control" name="username" required autocomplete="off" value="<?= $user->username ?>">
                                                 <?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
+                                            <input id="id_vaksin" type="hidden" class="form-control" name="id_vaksin" required autocomplete="off" value="<?= $vaksin->id_vaksin ?>">
                                             <button type="button" onclick="location.href='<?= base_url('Tendik') ?>'" class="btn btn-warning btn-sm"><i class="fas fa-backward"></i> Kembali</button>
                                             <button type="submit" name="ubah" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
                                         </div>

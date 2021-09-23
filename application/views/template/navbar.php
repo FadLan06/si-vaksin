@@ -35,7 +35,7 @@
     <!-- Right navbar links -->
     <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('Auth') ?>" role="button">
+        <a class="nav-link" href="<?= base_url('Auth/Keluar') ?>" role="button">
           <i class="fas fa-sign-out-alt"></i> Keluar
         </a>
       </li>

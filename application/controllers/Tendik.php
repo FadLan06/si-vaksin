@@ -8,6 +8,9 @@ class Tendik extends CI_Controller
     {
         parent::__construct();
         //Load Dependencies
+		if($this->session->userdata('username') == ''){
+			redirect('Auth');
+		}
 
     }
 
@@ -118,7 +121,8 @@ class Tendik extends CI_Controller
         $data = [
             'title' => 'Ubah Data Tendik',
             'tendik' => $this->db->get_where('tb_tendik', ['id' => $id])->row(),
-            'user' => $this->db->get_where('tb_user', ['nama' => $id])->row()
+            'user' => $this->db->get_where('tb_user', ['nama' => $id])->row(),
+            'vaksin' => $this->db->get_where('tb_vaksin', ['kode' => $id])->row(),
         ];
 
         $this->load->view('template/header', $data);
@@ -136,12 +140,18 @@ class Tendik extends CI_Controller
                 'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
             ];
 
-            $this->db->where('id', $this->input->post('id'));
+            $this->db->where('id_tendik', $this->input->post('id_tendik'));
             $this->db->update('tb_tendik', $data);
 
+            $this->db->set('nama', htmlspecialchars($this->input->post('id', true)));
             $this->db->set('username', htmlspecialchars($this->input->post('username', true)));
-            $this->db->where('nama', $this->input->post('id'));
+            $this->db->where('id_user', $this->input->post('id_user'));
             $this->db->update('tb_user');
+
+            $this->db->set('kode', htmlspecialchars($this->input->post('id', true)));
+            $this->db->set('nama', htmlspecialchars($this->input->post('nama', true)));
+            $this->db->where('id_vaksin', $this->input->post('id_vaksin'));
+            $this->db->update('tb_vaksin');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Tendik Berhasil di Ubah! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Tendik');

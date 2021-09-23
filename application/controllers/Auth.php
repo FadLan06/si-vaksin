@@ -66,4 +66,16 @@ class Auth extends CI_Controller
 			redirect('Auth');
 		}
 	}
+
+	public function keluar()
+	{
+		$this->session->unset_userdata('username');
+        $this->session->unset_userdata('role');
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('nama');
+        $this->session->unset_userdata('password');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Anda Telah Keluar!<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        redirect('Auth');
+	}
 }

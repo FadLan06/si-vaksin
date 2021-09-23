@@ -26,9 +26,10 @@
 
                                         <div class="row">
                                             <div class="form-group col-md-6">
-                                                <label for="nip">NIP</label>
-                                                <input id="nip" type="text" class="form-control" name="nip" autocomplete="off" required value="<?= $mahasiswa->nip ?>">
-                                                <?= form_error('nip', '<small class="text-danger pl-3">', '</small>') ?>
+                                                <label for="nim">NIM</label>
+                                                <input id="id_mahasiswa" type="hidden" class="form-control" name="id_mahasiswa" autocomplete="off" required value="<?= $mahasiswa->id_mahasiswa ?>">
+                                                <input id="nim" type="text" class="form-control" name="nim" autocomplete="off" required value="<?= $mahasiswa->nim ?>">
+                                                <?= form_error('nim', '<small class="text-danger pl-3">', '</small>') ?>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="nama">Nama Lengkap</label>
@@ -39,18 +40,20 @@
 
                                         <div class="row">
                                             <div class="form-group col-md-8">
-                                                <label for="jabatan">Jabatan</label>
-                                                <input id="jabatan" type="text" class="form-control" name="jabatan" autocomplete="off" required value="<?= $mahasiswa->jabatan ?>">
-                                                <?= form_error('jabatan', '<small class="text-danger pl-3">', '</small>') ?>
+                                                <label for="jurusan">Jurusan</label>
+                                                <input id="jurusan" type="text" class="form-control" name="jurusan" autocomplete="off" required value="<?= $mahasiswa->jurusan ?>">
+                                                <?= form_error('jurusan', '<small class="text-danger pl-3">', '</small>') ?>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="username">Username</label>
+                                                <input id="id_user" type="hidden" class="form-control" name="id_user" required autocomplete="off" value="<?= $user->id_user ?>">
                                                 <input id="username" type="text" class="form-control" name="username" required autocomplete="off" value="<?= $user->username ?>">
                                                 <?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
+                                            <input id="id_vaksin" type="hidden" class="form-control" name="id_vaksin" required autocomplete="off" value="<?= $vaksin->id_vaksin ?>">
                                             <button type="button" onclick="location.href='<?= base_url('mahasiswa') ?>'" class="btn btn-warning btn-sm"><i class="fas fa-backward"></i> Kembali</button>
                                             <button type="submit" name="ubah" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
                                         </div>

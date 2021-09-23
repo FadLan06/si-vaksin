@@ -8,6 +8,9 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		//Load Dependencies
+		if($this->session->userdata('username') == ''){
+			redirect('Auth');
+		}
 
 	}
 

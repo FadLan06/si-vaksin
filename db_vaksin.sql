@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 22, 2021 at 03:09 AM
+-- Generation Time: Sep 23, 2021 at 01:32 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.19
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_dosen` (
   `id_dosen` int(11) NOT NULL,
-  `nip` int(50) NOT NULL,
+  `nip` varchar(50) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,7 +39,7 @@ CREATE TABLE `tb_dosen` (
 --
 
 INSERT INTO `tb_dosen` (`id_dosen`, `nip`, `nama`, `jabatan`) VALUES
-(20, 5314, 'Fadhlan', 'Developer');
+(20, '531411', 'Fadhlan', 'Developer');
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ INSERT INTO `tb_dosen` (`id_dosen`, `nip`, `nama`, `jabatan`) VALUES
 
 CREATE TABLE `tb_mahasiswa` (
   `id_mahasiswa` int(11) NOT NULL,
-  `nim` int(50) NOT NULL,
+  `nim` varchar(50) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jurusan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -59,7 +59,7 @@ CREATE TABLE `tb_mahasiswa` (
 --
 
 INSERT INTO `tb_mahasiswa` (`id_mahasiswa`, `nim`, `nama`, `jurusan`) VALUES
-(12, 531415, 'Fadhlan', 'Developer');
+(12, '53141511', 'Fadhlan', 'Developer');
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ INSERT INTO `tb_mahasiswa` (`id_mahasiswa`, `nim`, `nama`, `jurusan`) VALUES
 
 CREATE TABLE `tb_tendik` (
   `id_tendik` int(11) NOT NULL,
-  `id` int(50) NOT NULL,
+  `id` varchar(50) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -79,7 +79,7 @@ CREATE TABLE `tb_tendik` (
 --
 
 INSERT INTO `tb_tendik` (`id_tendik`, `id`, `nama`, `jabatan`) VALUES
-(4, 531415007, 'Fadhlan', 'Developer');
+(5, '531415007', 'Fadhlan', 'Developer');
 
 -- --------------------------------------------------------
 
@@ -103,8 +103,8 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `nama`, `username`, `password`, `role`, `created_at`, `is_active`) VALUES
 (1, 'Super User', 'su', '$2y$10$2U.lo9TSxXZJfMpU8t6LAu1BAi5zbdM6M.TwSoi/jRFLFL8EcetWC', 1, 1583555000, 1),
-(31, '5314', '5314', '$2y$10$0dd1DFxU/D/yihg3/TZzHeoysjABSE4Aj8.Mru/T88buVHsJyV0wO', 2, 1632273085, 1),
-(39, '531415', '531415', '$2y$10$l/DCPf0FIqDGZGhp7nLI4uEGlgJpvVcPHnxJDcrbbOQ3Smixelshm', 4, 1632273918, 1),
+(31, '531411', '5314', '$2y$10$0dd1DFxU/D/yihg3/TZzHeoysjABSE4Aj8.Mru/T88buVHsJyV0wO', 2, 1632273085, 1),
+(39, '53141511', '531415', '$2y$10$l/DCPf0FIqDGZGhp7nLI4uEGlgJpvVcPHnxJDcrbbOQ3Smixelshm', 4, 1632273918, 1),
 (40, '531415007', '531415007', '$2y$10$8fJvNTd82zQu7ZhTSPA.Y.ZlAkoC7iuxEpI1bJZacpqUxo3vpYbpG', 3, 1632273940, 1);
 
 -- --------------------------------------------------------
@@ -151,8 +151,8 @@ CREATE TABLE `tb_vaksin` (
 --
 
 INSERT INTO `tb_vaksin` (`id_vaksin`, `kode`, `nama`, `status1`, `status2`, `status3`, `berkas1`, `berkas2`, `berkas3`) VALUES
-(4, '5314', 'Fadhlan', 1, 0, 0, 'a209157812f5663bd80e623ea02e9b21.jpg', '', ''),
-(12, '531415', 'Fadhlan', 0, 0, 0, '', '', ''),
+(4, '531411', 'Fadhlan', 1, 0, 0, 'a209157812f5663bd80e623ea02e9b21.jpg', '', ''),
+(12, '53141511', 'Fadhlan', 0, 0, 0, '', '', ''),
 (13, '531415007', 'Fadhlan', 1, 1, 1, '162311092397b6e90ea7b65d55209bde.jpg', 'f898beaa3858b86c8808828d436a3e6e.jpg', 'dea0ab5c6b9b779d74371c9bcd6c42c1.jpg');
 
 --
@@ -215,7 +215,7 @@ ALTER TABLE `tb_mahasiswa`
 -- AUTO_INCREMENT for table `tb_tendik`
 --
 ALTER TABLE `tb_tendik`
-  MODIFY `id_tendik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_tendik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_user`

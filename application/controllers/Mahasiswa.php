@@ -38,6 +38,7 @@ class Mahasiswa extends CI_Controller
                     <td> ' . $data->nim . '</td>
                     <td> ' . $data->nama . '</td>
                     <td> ' . $data->jurusan . '</td>
+                    <td> ' . $data->angkatan . '</td>
                     <td align="center"><a href=" ' . base_url('Mahasiswa/Reset/') . $data->nim . '" class="badge badge-warning"><i class="fas fa-sync-alt"></i> Reset</a></td>
                     <td align="center">
                     <a href="' . base_url('Mahasiswa/Ubah/') . $data->nim . '" class="badge badge-info"><i class="fas fa-edit"></i> Ubah</a>
@@ -86,7 +87,8 @@ class Mahasiswa extends CI_Controller
                 $data = [
                     'nim' => htmlspecialchars($this->input->post('nim', true)),
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
-                    'jurusan' => htmlspecialchars($this->input->post('jurusan', true))
+                    'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
+                    'angkatan' => htmlspecialchars($this->input->post('angkatan', true)),
                 ];
 
                 $this->db->insert('tb_mahasiswa', $data);
@@ -138,6 +140,7 @@ class Mahasiswa extends CI_Controller
                 'nim' => htmlspecialchars($this->input->post('nim', true)),
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'jurusan' => htmlspecialchars($this->input->post('jurusan', true)),
+                'angkatan' => htmlspecialchars($this->input->post('angkatan', true)),
             ];
             
             $this->db->where('id_mahasiswa', $this->input->post('id_mahasiswa'));
@@ -224,6 +227,7 @@ class Mahasiswa extends CI_Controller
                     $data_excel[$i - 1]['nim']    = $sheets['cells'][$i][1];
                     $data_excel[$i - 1]['nama']   = $sheets['cells'][$i][2];
                     $data_excel[$i - 1]['jurusan'] = $sheets['cells'][$i][3];
+                    $data_excel[$i - 1]['angkatan'] = $sheets['cells'][$i][4];
 
                     $nim = $sheets['cells'][$i][1];
                 }
@@ -233,8 +237,8 @@ class Mahasiswa extends CI_Controller
                     if ($sheets['cells'][$i][1] == '') break;
 
                     $data_excel1[$i - 1]['nama']    = $sheets['cells'][$i][1];
-                    $data_excel1[$i - 1]['username']    = $sheets['cells'][$i][4];
-                    $data_excel1[$i - 1]['password']   = password_hash($sheets['cells'][$i][5], PASSWORD_DEFAULT);
+                    $data_excel1[$i - 1]['username']    = $sheets['cells'][$i][5];
+                    $data_excel1[$i - 1]['password']   = password_hash($sheets['cells'][$i][6], PASSWORD_DEFAULT);
                     $data_excel1[$i - 1]['role']    = 4;
                     $data_excel1[$i - 1]['created_at']    = time();
                     $data_excel1[$i - 1]['is_active']    = 1;

@@ -28,6 +28,9 @@
           <li class="nav-item">
             <a href="<?= base_url('Vaksin') ?>" class="nav-link">Vaksin</a>
           </li>
+          <li class="nav-item">
+            <a href="<?= base_url('Pcr') ?>" class="nav-link">PCR</a>
+          </li>
         </ul>
 
       </div>

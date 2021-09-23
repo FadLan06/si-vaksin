@@ -36,10 +36,17 @@
                         <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="jurusan">Jurusan</label>
-                      <input id="jurusan" type="text" class="form-control" name="jurusan" required autocomplete="off">
-                      <?= form_error('jurusan', '<small class="text-danger pl-3">', '</small>') ?>
+                    <div class="row">
+                      <div class="form-group col-md-8">
+                        <label for="jurusan">Jurusan</label>
+                        <input id="jurusan" type="text" class="form-control" name="jurusan" required autocomplete="off">
+                        <?= form_error('jurusan', '<small class="text-danger pl-3">', '</small>') ?>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="angkatan">Angkatan</label>
+                        <input id="angkatan" type="text" class="form-control" name="angkatan" required autocomplete="off">
+                        <?= form_error('angkatan', '<small class="text-danger pl-3">', '</small>') ?>
+                      </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-md-4">

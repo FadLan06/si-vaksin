@@ -32,6 +32,7 @@
                       <th width="20%">NIM</th>
                       <th>Nama Lengkap</th>
                       <th width="20%">Jurusan</th>
+                      <th width="10%">Angkatan</th>
                       <th width="10%">Password</th>
                       <th width="10%">Aksi</th>
                     </tr>
